@@ -1,6 +1,6 @@
 "use strict";
 
-import crypto_1 from "crypto";
+const crypto_1 = require("crypto");
 
 var ErrorCode; // Define enum for error codes
 (function (ErrorCode) {
@@ -48,7 +48,7 @@ function aesEncrypt(plainText, key, iv) {
   return Uint8Array.from(out).buffer;
 }
 // Function to generate token using given parameters
-export function generateToken04(
+function generateToken04(
   appId,
   userId,
   secret,
@@ -119,3 +119,7 @@ export function generateToken04(
   // console.log('-----------------');
   return "04" + Buffer.from(dv.buffer).toString("base64"); // Return final token string in Base64 format
 }
+
+module.exports = {
+  generateToken04
+};
